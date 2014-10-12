@@ -1,0 +1,29 @@
+# ~/.config/openbox/autostart
+# These things are run when an Openbox X Session is started.
+
+#bottom panel
+tint2 -c /home/eugen/.config/tint2/my.tint2rc &
+
+#sound regulator(for tint2)
+volumeicon &
+#pnmixer &
+
+#changing layout
+#setxkbmap -layout us, ru -variant -option grp:alt_shift_toggle, terminate:ctrl_alt_bksp&
+
+# terminal
+guake &
+
+#wallpaper(if desktop manager isn't setted)
+#nitrogen --restore &
+
+#layout panel(for tint2)
+xxkb &
+
+# Menus
+#xmenud -t &
+
+#Desktop
+spacefm --desktop
+
+
