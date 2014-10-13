@@ -58,6 +58,8 @@ alias pcmnlog="cat /var/log/pacman.log"
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
 
-export PATH="$PATH:$HOME/.rvm/bin" 
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
-fpath=(~/.zsh/Completion $fpath)
+fpath=(/home/eugen/.zsh/Completion/ $fpath)
+source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:$HOME/.rvm/bin" 
+
