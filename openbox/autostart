@@ -8,6 +8,9 @@ tint2 -c /home/eugen/.config/tint2/my.tint2rc &
 volumeicon &
 #pnmixer &
 
+# wifi(-t - tray)
+wicd-client --tray &
+
 #changing layout
 #setxkbmap -layout us, ru -variant -option grp:alt_shift_toggle, terminate:ctrl_alt_bksp&
 
@@ -20,10 +23,15 @@ guake &
 #layout panel(for tint2)
 xxkb &
 
+#composite manager (i - opcity of inactive windows, f,I,O - in, out fading)
+compton --config /home/eugen/.config/.compton.conf -b  
+
 # Menus
 #xmenud -t &
 
+#conky 
+#~/.conky_start.sh &
+
 #Desktop
 spacefm --desktop
-
 
