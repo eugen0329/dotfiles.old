@@ -124,3 +124,6 @@ set shell=/bin/bash
 
 " show command you entering at the bottom
 set showcmd  
+
+" highlight active line
+set cursorline 
