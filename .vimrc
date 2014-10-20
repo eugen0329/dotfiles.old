@@ -1,3 +1,4 @@
+" {{{
 map ё `
 map й q
 map ц w
@@ -64,6 +65,7 @@ map Т N
 map Ь M
 map Б <
 map Ю >
+" }}}
 
 set wildmenu
 set wcm=<Tab>
@@ -73,6 +75,14 @@ menu Encoding.cp866   :e ++enc=cp866<CR>
 menu Encoding.ucs-2le :e ++enc=ucs-2le<CR>
 menu Encoding.utf-8   :e ++enc=utf-8<CR>
 map <F12> :emenu Encoding.<Tab>
+
+
+" autocompl for brackets, quotes, ...
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
 
 syntax on 
 " ignore case while searching 
@@ -107,6 +117,8 @@ set foldmethod=marker
 set foldlevel=9000
 
 " colors
+let g:molokai_original = 1
+"let g:rehash256 = 1
 colorscheme molokai
 set term=screen-256color
 
@@ -122,8 +134,11 @@ filetype plugin on
 " to prevent shell conflicts
 set shell=/bin/bash
 
+" highlight active line
+set cursorline 
+
 " show command you entering at the bottom
 set showcmd  
 
-" highlight active line
-set cursorline 
+set autoindent
+"filetype plugin indent on
