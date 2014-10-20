@@ -1,7 +1,14 @@
 #~/.zshrc
 
-
 export EDITOR="vim"
+#export HISTFILE="~/.zsh_history
+#
+
+# history prop
+export HISTSIZE=2000 
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
 
 # Left prompt
 if [[ $EUID == 0 ]] 
@@ -10,13 +17,14 @@ then
     PROMPT=$'%{\e[1;31m%}%n %{\e[1;34m%}%~ #%{\e[0m%} ' 
 else
     #          \e[1;31m - bold green, \e[1;34m - bold blue
-    PROMPT=$'%{\e[1;32m%}%n %{\e[1;34m%}%~ $%{\e[0m%} ' 
+    PROMPT=$'%{\e[1;32m%}%n %{\e[1;34m%}%~ $%{\e[0m%} '
 fi
-
 
 # Autocompl
 autoload -U compinit promptinit 
-compinit promptinit
+compinit 
+promptinit
+
 # Show menu is first letter are coincided
 zstyle ':completion:*' menu select=long-list select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -46,7 +54,7 @@ fi
 
 # Aliases
 alias tmux="TERM=screen-256color-bce tmux"
-alias t="tmux "
+alias t="tmux"
 alias x="exit"
 alias v="vim"
 alias vi="vim"
@@ -57,9 +65,9 @@ alias pcmnlog="cat /var/log/pacman.log"
 # Get keycodes(in graphical enviroment). From xorg-xev package
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
-
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
+[[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 fpath=(/home/eugen/.zsh/Completion/ $fpath)
-source "$HOME/.rvm/scripts/rvm"
 export PATH="$PATH:$HOME/.rvm/bin" 
+
 
