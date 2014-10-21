@@ -64,6 +64,10 @@ alias ls='ls --color=auto'
 alias pcmnlog="cat /var/log/pacman.log"
 # Get keycodes(in graphical enviroment). From xorg-xev package
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
+# Git aliases
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
 
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 [[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

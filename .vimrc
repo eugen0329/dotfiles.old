@@ -137,6 +137,7 @@ set shell=/bin/bash
 " highlight active line
 set cursorline 
 
+
 " show command you entering at the bottom
 set showcmd  
 
