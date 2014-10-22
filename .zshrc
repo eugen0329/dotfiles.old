@@ -1,77 +1,40 @@
-#~/.zshrc
+# ~/.zshrc
+
+######################
+# Oh-my-zsh configs
+######################
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# zsh theme
+ZSH_THEME="blue_and_green"
+
+source $ZSH/oh-my-zsh.sh
+
+plugins=(git)
+
+######################
+# User configuration
+######################
 
 export EDITOR="vim"
-#export HISTFILE="~/.zsh_history
-#
 
-# history prop
+# zsh history 
 export HISTSIZE=2000 
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
-# Left prompt
-if [[ $EUID == 0 ]] 
-then
-    #          \e[1;31m - bold red, \e[1;34m - bold blue
-    PROMPT=$'%{\e[1;31m%}%n %{\e[1;34m%}%~ #%{\e[0m%} ' 
-else
-    #          \e[1;31m - bold green, \e[1;34m - bold blue
-    PROMPT=$'%{\e[1;32m%}%n %{\e[1;34m%}%~ $%{\e[0m%} '
-fi
-
-# Autocompl
-autoload -U compinit promptinit 
-compinit 
-promptinit
-
-# Show menu is first letter are coincided
-zstyle ':completion:*' menu select=long-list select=1
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30"
-export LS_COLORS
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}.
-
 # Change dir without writing cd
 setopt autocd
 
-# Bindkeys
-bindkey '^E' end-of-line            # Ctrl+E
-bindkey '^A' beginning-of-line      # Ctrl+A
-bindkey "\e[3~" delete-char
+export PATH="/home/eugen/.rvm/gems/ruby-2.1.3/bin:/home/eugen/.rvm/gems/ruby-2.1.3@global/bin:/home/eugen/.rvm/rubies/ruby-2.1.3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/eugen/.rvm/bin:/home/eugen/.rvm/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
 
-bindkey '^P' menu-expand-or-complete 
-bindkey '^[[Z' reverse-menu-complete # SHIFT+TAB 
-
-# Setting color mode of the terminal
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
+if which tmux 2>&1 >/dev/null; then
+  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+    #tmux attach -t hack || tmux new -s hack; exit
+    tmux attach || tmux new; exit
+  fi
 fi
-
-# Aliases
-alias tmux="TERM=screen-256color-bce tmux"
-alias t="tmux"
-alias x="exit"
-alias v="vim"
-alias vi="vim"
-alias ru="ruby"
-alias ls='ls --color=auto' 
-# List pacman's log
-alias pcmnlog="cat /var/log/pacman.log"
-# Get keycodes(in graphical enviroment). From xorg-xev package
-alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-# Git aliases
-alias ga="git add"
-alias gc="git commit"
-alias gp="git push"
-
-[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
-[[ -r "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-fpath=(/home/eugen/.zsh/Completion/ $fpath)
-export PATH="$PATH:$HOME/.rvm/bin" 
-
-

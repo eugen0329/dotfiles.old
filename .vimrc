@@ -67,6 +67,35 @@ map Б <
 map Ю >
 " }}}
 
+
+" #######
+" Vundle
+" #######
+set nocompatible                  
+filetype off                       
+" runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Self managing
+Bundle 'gmarik/vundle'
+
+" Plugins
+Bundle 'itchyny/lightline.vim'
+Bundle 'fugitive.vim'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'scrooloose/nerdtree'
+
+" Color schemes
+Bundle 'flazz/vim-colorschemes'
+Bundle 'desert-warm-256'
+
+filetype plugin on
+
+"###########
+" Settings
+"###########
+
 set wildmenu
 set wcm=<Tab>
 menu Encoding.koi8-r  :e ++enc=koi8-r<CR>
@@ -76,13 +105,12 @@ menu Encoding.ucs-2le :e ++enc=ucs-2le<CR>
 menu Encoding.utf-8   :e ++enc=utf-8<CR>
 map <F12> :emenu Encoding.<Tab>
 
-
 " autocompl for brackets, quotes, ...
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap { {}<Left>
 
 syntax on 
 " ignore case while searching 
@@ -90,7 +118,7 @@ set ic
 " hightlight searhc 
 " set hls
 " use incremental search 
-set is
+set incsearch
 " max text width 
 set textwidth=80
 " minimal window height 
@@ -108,7 +136,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 " wrap by a word
 set linebreak
 set dy=lastline
-" line numbers
+" show line numbers
 set number
 
 " fold 
@@ -118,9 +146,11 @@ set foldlevel=9000
 
 " colors
 let g:molokai_original = 1
-"let g:rehash256 = 1
-colorscheme molokai
 set term=screen-256color
+"let g:rehash256 = 1
+"colorscheme Monokai-chris
+"colorscheme Monokai
+colorscheme molokai
 
 "automatically save your foldings 
 autocmd BufWinLeave *.* mkview 
@@ -137,9 +167,27 @@ set shell=/bin/bash
 " highlight active line
 set cursorline 
 
-
 " show command you entering at the bottom
-set showcmd  
+"set showcmd  
 
+set cindent
 set autoindent
 "filetype plugin indent on
+
+set laststatus=2
+set noshowmode
+
+scriptencoding utf-8
+set encoding=utf-8
+"set ambiwidth=double
+let g:Powerline_symbols = 'fancy'
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
